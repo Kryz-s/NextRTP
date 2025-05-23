@@ -1,0 +1,8 @@
+# DON't TOUCH THIS
+config-versions:
+  config: 1
+  lang: 1
+  rtp: 1
+  sign: 1
+modules:
+  sign: true
