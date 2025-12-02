@@ -1,0 +1,24 @@
+pre_conditions:
+  - id: default_condition
+    conditions:
+      - id: blacklist_blocks
+        condition:
+          - WATER
+          - OAK_WOOD
+      - id: blacklist_biomes
+        condition:
+          - nether
+pos_conditions:
+  - id: default_condition
+    conditions:
+      - id: blacklist_blocks
+        condition:
+          - WATER
+          - LAVA
+          - SAND
+          - SEAGRASS
+          - TALL_SEAGRASS
+          - KELP
+      - id: blacklist_biomes
+        condition:
+          - ocean

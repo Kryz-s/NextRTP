@@ -1,0 +1,53 @@
+config-version: 1
+
+teleport:
+  default-area:
+    # This is unnecessary
+    id: player-world
+    # If this option is enabled, the world border will be used as the area
+    # And the centers will be ignored
+    use-world-border: true
+    radius: 200
+    max-y: 100
+    min-y: 80
+    attempts: 1
+    max-radius: 100
+    min-radius: 50
+    center-x: 150
+    center-z: -150
+    cooldown: 10
+    money: 30
+    delay: 30
+    algorithm: square
+    pre-condition: default_condition
+    pos-condition: default_condition
+  per-world-area:
+    - id: world
+      use-world-border: false
+      radius: 300
+      max-y: 130
+      min-y: 50
+      center-x: 100
+      center-z: -50
+      cooldown: 30
+      attempts: 10
+      delay: 5
+      money: 500
+      algorithm: square
+      pre-condition: default_condition
+      pos-condition: default_condition
+      permission: "teleport.world"
+    - id: world_nether
+      use-world-border: false
+      radius: 300
+      max-y: 130
+      min-y: 50
+      center-x: 100
+      center-z: -50
+      cooldown: 30
+      delay: 5
+      money: 5000
+      algorithm: square
+      pre-condition: default_condition
+      pos-condition: default_condition
+      permission: "teleport.world_nether"

@@ -1,0 +1,30 @@
+#
+# Check all sounds at https://github.com/PaperMC/Paper/blob/main/paper-api/src/main/java/org/bukkit/Sound.java
+#
+core:
+  default:
+    delay:
+      sound: block.note_block.hat
+      pitch: 1.0 # Default 1
+      volume: 1.0 # Default 1
+    success:
+      sound: entity.enderman.teleport
+      pitch: 1.0 # Default 1
+      volume: 1.0 # Default 1
+    fail:
+      sound: block.note_block.hat
+      pitch: 0.1 # Default 1
+      volume: 1.0 # Default 1
+  "world":
+    delay:
+      sound: block.note_block.hat
+      pitch: 1.0 # Default 1
+      volume: 1.0 # Default 1
+    success:
+      sound: entity.enderman.teleport
+      pitch: 1.0 # Default 1
+      volume: 1.0 # Default 1
+    fail:
+      sound: block.note_block.hat
+      pitch: 0.1 # Default 1
+      volume: 1.0 # Default 1

@@ -1,0 +1,35 @@
+config-version: 1
+
+prefix: "<#888888><bold>⤷</bold> <#00b4db>NextRTP</#00b4db> <#888888>»</#888888>"
+
+modules:
+
+  core:
+    currency:
+      no-money: "<prefix> <#d9534f>Insufficient funds <#aaaaaa>(<#ffd700><money></#ffd700><#aaaaaa>)</#aaaaaa>."
+      charged: "<prefix> <#bbbbbb>Charged <#ffffff><money></#ffffff> for teleportation."
+
+    command:
+      world:
+        no-permission: "<prefix> No permission for world <world>."
+        no-find: "<prefix> World <world> not find."
+      reload:
+        success: "<prefix> <#5cb85c>Plugin reloaded."
+        error: "<prefix> <#d9534f>Reload failed. Check console."
+      invalid-sender: "<prefix> <#d9534f>Invalid command executor, you must be a player."
+      invalid-player: "<prefix> <#d9534f>The player <player> isn't found."
+
+    teleport:
+      starting: "<prefix> <#bbbbbb>Starting teleportation."
+      waiting: "<prefix> &fWaiting for random teleport in &e<seconds> &fseconds..."
+      move: "<prefix> <#d9534f>You're move! Teleport cancelled."
+      progress: "<prefix> <#f0ad4e>Teleport already in progress."
+      no-permission: "<prefix> <#f0ad4e>You have not permission to teleport to that location!"
+      on-cooldown: "<prefix> <#d9534f>Please wait <#ffffff><cooldown></#ffffff> seconds before teleporting again."
+      not-allowed: "<prefix> <#d9534f>Teleport not allowed."
+      failed: "<prefix> <#d9534f>Teleport failed: <reason>"
+      reasons:
+        invalid-biome: "The target biome <biome> is invalid."
+        invalid-block: "The target block <block> is invalid."
+  sign:
+    sign-success: "<prefix> <#bbbbbb>Sign set at <#ffffff><x> <y> <z></#ffffff>."

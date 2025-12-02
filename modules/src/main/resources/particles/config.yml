@@ -1,0 +1,8 @@
+
+core:
+  world: "vortex"
+  world_nether: "halo"
+
+# This is a non functional section, will be added in alpha 2.
+location:
+  example_location: "dna"

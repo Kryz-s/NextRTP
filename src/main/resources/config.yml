@@ -1,8 +1,10 @@
-# DON't TOUCH THIS
-config-versions:
-  config: 1
-  lang: 1
-  rtp: 1
-  sign: 1
+config-version: 1
+
+debug: false
+
 modules:
+  simple: true
+  particles: true
   sign: true
+  sound: true
+  animation-title: true

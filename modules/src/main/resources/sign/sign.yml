@@ -1,0 +1,5 @@
+config-version: 1
+
+sign:
+  line: "[RTP]"
+  ignore-case: true

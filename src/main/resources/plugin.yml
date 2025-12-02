@@ -1,12 +1,13 @@
-name: NextRTP
-main: ur.kryz.rtp.NextRTPPlugin
+name: $name
+main: io.github.krys.nextrtp.NextPlugin
 version: $version
-api-version: 1.20
+api-version: 1.20.5
 author: Krysz_
-description: A plugin to add RTP configurable to your server
+description: A better option, with better performance, a better rtp.
 softdepend:
   - Vault
   - PlaceholderAPI
+  - MiniPlaceholders
 permissions:
   nextrtp.command.*:
     children:
@@ -14,9 +15,11 @@ permissions:
       nextrtp.command.rtp: true
       nextrtp.command.sudo: true
       nextrtp.command.world: true
-      #nextrtp.command.location: true
+      nextrtp.command.location: true
+
   nextrtp.command.rtp:
     default: true
+
   nextrtp.sign:
     default: false
   nextrtp.admin:
@@ -24,11 +27,12 @@ permissions:
       nextrtp.sign: true
       nextrtp.command.*: true
       nextrtp.bypass.*: true
-      nextrtp.world.*: true
-  nextrtp.world.*:
-    description: "Rtp enabled in all worlds."
+      nextrtp.bypass.command.*: true
   nextrtp.bypass.*:
     children:
       nextrtp.bypass.timer: true
       nextrtp.bypass.cooldown: true
       nextrtp.bypass.money: true
+  nextrtp.bypass.command.*:
+    children:
+      nextrtp.bypass.command.world: true

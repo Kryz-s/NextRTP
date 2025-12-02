@@ -1,0 +1,6 @@
+
+core:
+  world:
+    title: "title-1"
+    subtitle: "subtitle-1"
+    action-bar: "actionbar-1"
