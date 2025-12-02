@@ -11,7 +11,7 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 
 public final class SoundWrapper {
 
-  private static final Object2ObjectOpenHashMap<String, Key> keyCache = new Object2ObjectOpenHashMap<>(Sound.class.getDeclaredFields().length);
+  private static final Object2ObjectOpenHashMap<String, Key> keyCache = new Object2ObjectOpenHashMap<>();
 
   @Nullable
   public static Sound valueOf(@Subst("minecraft:example_sound.phase.2") @NotNull String key) {

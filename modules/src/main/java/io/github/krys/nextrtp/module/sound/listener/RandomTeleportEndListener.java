@@ -39,7 +39,7 @@ public final class RandomTeleportEndListener implements Listener {
     final SoundSection soundSection = soundConfiguration.getSoundSection(key, event.getIdentity());
     if (soundSection == null) return;
 
-    final Sound sound = soundSection.fail();
+    final Sound sound = soundSection.success();
     if (sound == null) return;
     
     event.getPlayer().playSound(sound);

@@ -21,6 +21,7 @@ public final class RandomTeleportPreListener implements Listener {
     service.startAnimation(event.getPlayer(), key);
   }
   
+  @EventHandler()
   public void onFail(RandomTeleportFailEvent event) {
     service.stopAnimation(event.getPlayer());
   }

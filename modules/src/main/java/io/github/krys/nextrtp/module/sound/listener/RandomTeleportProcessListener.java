@@ -4,7 +4,6 @@ import io.github.krys.nextrtp.module.sound.configuration.SoundConfiguration;
 import io.github.krys.nextrtp.module.sound.configuration.SoundSection;
 import io.github.krys.nextrtp.common.api.event.bus.RandomTeleportProcessEvent;
 import io.github.krys.nextrtp.common.asmbus.listener.Listener;
-import io.github.krys.nextrtp.common.info.WorldTeleportInfo;
 import net.kyori.adventure.sound.Sound;
 import org.jetbrains.annotations.NotNull;
 

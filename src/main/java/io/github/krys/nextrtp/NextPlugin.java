@@ -58,20 +58,19 @@ public final class NextPlugin extends JavaPlugin {
   @Override
   public void onEnable() {
     final var langConfig = new LangConfiguration(
-      new File(this.getDataFolder(), "lang/lang.yml"),
-      this.getResource("lang/lang.yml")
-    );
+        new File(this.getDataFolder(), "lang/lang.yml"),
+        this.getResource("lang/lang.yml"));
 
     TranslatorFiles.INSTANCE.add(Locale.US, langConfig);
 
-    final var pluginConfig = new RtpConfiguration(new File(this.getDataFolder(), "config.yml"), this.getResource("config.yml"));
+    final var pluginConfig = new RtpConfiguration(new File(this.getDataFolder(), "config.yml"),
+        this.getResource("config.yml"));
 
-    final var conditionConfig = new AbstractConfiguration(() ->
-      YamlDocument.create(new File(this.getDataFolder(), "conditions.yml"), this.getResource("conditions.yml"))
-    );
+    final var conditionConfig = new AbstractConfiguration(() -> YamlDocument
+        .create(new File(this.getDataFolder(), "conditions.yml"), this.getResource("conditions.yml")));
 
     final var serviceRegistry = new ServiceRegistry();
-    
+
     serviceRegistry.add(new LoggerService());
     final HookRegistry hookRegistry = new HookRegistry(this, serviceRegistry.get(LoggerService.class));
     serviceRegistry.add(new MinecraftScheduleService(this));
@@ -88,16 +87,15 @@ public final class NextPlugin extends JavaPlugin {
     reloadableManager.add(conditionConfig);
     reloadableManager.add(debug);
     reloadableManager.add(Registries.CONDITION);
-    //reloadableManager.add(Registries.CONDITION_PROCESSOR);
+    // reloadableManager.add(Registries.CONDITION_PROCESSOR);
 
     Registries.CONDITION_PROCESSOR.addProcessor("blacklist_blocks", new BlockConditionProcessor());
     Registries.CONDITION_PROCESSOR.addProcessor("blacklist_biomes", new BiomeConditionProcessor());
 
     reloadableManager.add(new ConditionLoader(
-      conditionConfig,
-      serviceRegistry.get(LoggerService.class)
-    ));
-    
+        conditionConfig,
+        serviceRegistry.get(LoggerService.class)));
+
     final var commandManager = new CommandManager(this);
 
     commandManager.register(new ReloadCommand(reloadableManager));
@@ -105,9 +103,11 @@ public final class NextPlugin extends JavaPlugin {
     final var pluginBridge = new PluginBridgeImpl(serviceRegistry, reloadableManager);
     moduleManager = new ModuleManager<>(pluginBridge, serviceRegistry.get(LoggerService.class));
 
-    final var teleportRepository = new TeleportPendingRepository(pluginBridge.getServiceRegistry().get(MinecraftScheduleService.class));
+    final var teleportRepository = new TeleportPendingRepository(
+        pluginBridge.getServiceRegistry().get(MinecraftScheduleService.class));
 
-    pluginBridge.addEventBusListener(new RandomTeleportPreListener(teleportRepository, serviceRegistry.get(VaultService.class)));
+    pluginBridge.addEventBusListener(
+        new RandomTeleportPreListener(teleportRepository, serviceRegistry.get(VaultService.class)));
     pluginBridge.addEventBusListener(new RandomTeleportProcessListener());
 
     Bukkit.getPluginManager().registerEvents(new ServerLoadEventListener(), this);
@@ -118,7 +118,8 @@ public final class NextPlugin extends JavaPlugin {
     checkModules(pluginConfig, moduleManager);
 
     moduleManager.getModules().forEach(pluginBridgeModule -> {
-      if (!(pluginBridgeModule instanceof AbstractModule abstractModule)) return;
+      if (!(pluginBridgeModule instanceof AbstractModule abstractModule))
+        return;
       abstractModule.handleCommand(commandManager, pluginBridge);
     });
 
@@ -127,31 +128,33 @@ public final class NextPlugin extends JavaPlugin {
     });
 
     CompletableFuture.runAsync(() -> reloadableManager.reload())
-    .exceptionally(thrown -> {
-      this.getSLF4JLogger().error("An error ocurred while reloading", thrown);
-      return null;
-    });
+        .exceptionally(thrown -> {
+          this.getSLF4JLogger().error("An error ocurred while reloading", thrown);
+          return null;
+        });
 
   }
 
   @Override
   public void onDisable() {
-    if (moduleManager == null) return;
+    if (moduleManager == null)
+      return;
     moduleManager.disableModules();
   }
 
   @SuppressWarnings("unchecked")
   public void checkModules(RtpConfiguration configuration, ModuleManager<PluginBridge> moduleManager) {
     Module<?>[] modules = {
-      new SimpleModule(this),
-      new SignModule(this),
-      new SoundModule(this),
-      new ParticleModule(this),
-      new AnimationTitleModule(this)
+        new SimpleModule(this),
+        new SignModule(this),
+        new SoundModule(this),
+        new ParticleModule(this),
+        new AnimationTitleModule(this)
     };
 
     for (Module<?> pluginBridgeModule : modules) {
-      if (!configuration.getBoolean("modules." + pluginBridgeModule.getId(), false)) continue;
+      if (!configuration.getBoolean("modules." + pluginBridgeModule.getId(), false))
+        continue;
       moduleManager.register((Module<PluginBridge>) pluginBridgeModule);
     }
   }
